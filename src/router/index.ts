@@ -8,9 +8,9 @@ const routes: Array<RouteRecordRaw> = [
     component: PageHome,
   },
   {
-    path: '/auth',
-    name: 'auth',
-    component: () => import('../views/PageAuth.vue'),
+    path: '/requestLogInUrl',
+    name: 'requestLogInUrl',
+    component: () => import('../views/PageRequestLoginUrl.vue'),
   },
 ]
 

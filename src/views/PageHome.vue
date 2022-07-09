@@ -1,32 +1,16 @@
 <template>
-  <div>
-    <button @click="onSignOut">Logout</button>
-  </div>
+  <div>Home</div>
 </template>
 
 <script lang="ts" setup>
-import useFirebaseAuthUserListener from '@/hooks/useFirebaseAuthUserListener'
+import { onMounted } from 'vue';
 import { useRouter } from 'vue-router'
-import { getAuth, signOut } from 'firebase/auth'
-import firebaseClient from '@/firebaseClient'
-import serverCall from '@/shared/serverCall'
 
-const auth = getAuth(firebaseClient)
 const router = useRouter()
 
-useFirebaseAuthUserListener((user) => {
-  if (!user) {
-    router.replace({
-      name: 'auth',
-    })
-    return
-  }
-  serverCall({
-    url: '/auth/users.ensureIsRegistered',
+onMounted(() => {
+  router.replace({
+    name: 'requestLogInUrl',
   })
 })
-
-const onSignOut = () => {
-  signOut(auth)
-}
 </script>

@@ -1,15 +1,12 @@
 import axios from 'axios'
-import { getAuth } from 'firebase/auth'
-import firebaseClient from '@/firebaseClient'
 
 type Args = {
     url: string;
+    data?: Record<string, unknown>;
 }
 
 const serverCall = async (args: Args) => {
-    const auth = getAuth(firebaseClient)
-    const token = auth.currentUser
-        ? await auth.currentUser.getIdToken(true) : undefined
+    const token = undefined
 
     const headers = token
         ? {
@@ -22,6 +19,7 @@ const serverCall = async (args: Args) => {
         url: args.url,
         headers: headers,
         method: 'POST',
+        data: args.data,
     })
 }
 
