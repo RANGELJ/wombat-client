@@ -9,6 +9,7 @@ import useFirebaseAuthUserListener from '@/hooks/useFirebaseAuthUserListener'
 import { useRouter } from 'vue-router'
 import { getAuth, signOut } from 'firebase/auth'
 import firebaseClient from '@/firebaseClient'
+import serverCall from '@/shared/serverCall'
 
 const auth = getAuth(firebaseClient)
 const router = useRouter()
@@ -18,7 +19,11 @@ useFirebaseAuthUserListener((user) => {
     router.replace({
       name: 'auth',
     })
+    return
   }
+  serverCall({
+    url: '/auth/users.ensureIsRegistered',
+  })
 })
 
 const onSignOut = () => {
