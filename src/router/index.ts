@@ -4,7 +4,8 @@ import PageHome from '../views/PageHome.vue'
 export enum RouteNames {
   HOME = 'home',
   UNSUPPORTED = 'unsupportedBrowser',
-  NEW_USER = 'newUser'
+  NEW_USER = 'newUser',
+  NEW_USER_PATTERN = 'newUserPattern'
 }
 
 const routes: Array<RouteRecordRaw> = [
@@ -22,6 +23,11 @@ const routes: Array<RouteRecordRaw> = [
     path: '/newUser',
     name: RouteNames.NEW_USER,
     component: () => import('../views/PageNewUser.vue'),
+  },
+  {
+    path: '/newUserPattern',
+    name: RouteNames.NEW_USER_PATTERN,
+    component: () => import('../views/PageNewUserPattern.vue'),
   },
 ]
 

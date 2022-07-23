@@ -1,5 +1,9 @@
 <template>
-    <button class="baseButton"><slot /></button>
+    <button
+      class="baseButton"
+    >
+      <slot />
+    </button>
 </template>
 
 <style scoped>

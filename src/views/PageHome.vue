@@ -64,7 +64,7 @@ onMounted(() => {
 })
 
 const onCreateNewUser = () => {
-  router.replace({
+  router.push({
     name: RouteNames.NEW_USER,
   })
 }

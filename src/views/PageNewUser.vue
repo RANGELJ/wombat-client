@@ -20,10 +20,16 @@
         </template>
         <template v-slot:actions>
             <div class="actions">
-                <WButton class="cancelButton" @click="onCancel">CANCEL</WButton>
+                <WButton
+                    class="cancelButton"
+                    @click="onCancel"
+                    :disabled="checkingName"
+                >
+                    CANCEL
+                </WButton>
                 <WButton
                     class="addButton"
-                    :disabled="!alias"
+                    :disabled="!alias || checkingName"
                     @click="onNext"
                 >
                     NEXT
@@ -108,15 +114,27 @@ const onCancel = () => {
 }
 
 const alias = ref('')
+const checkingName = ref(false)
 
 const onNext = () => {
     if (!alias.value) {
         return
     }
+    checkingName.value = true
     dbGetInstance()
         .then((db) => dbWombatUsersGetByName(db, alias.value))
         .then((user) => {
-            console.log(user)
+            if (!user) {
+                router.push({
+                    name: RouteNames.NEW_USER_PATTERN,
+                    params: {
+                        alias: alias.value,
+                    },
+                })
+            }
+        })
+        .finally(() => {
+            checkingName.value = false
         })
 }
 </script>
