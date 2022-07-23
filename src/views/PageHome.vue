@@ -1,25 +1,20 @@
 <template>
-  <div class="pageFrame">
-    <WButton
-      @click="onCreateNewUser"
-    >
-      ADD USER
-    </WButton>
-  </div>
+  <WFormFrame>
+    <template v-slot:actions>
+      <WButton
+        @click="onCreateNewUser"
+      >
+        ADD USER
+      </WButton>
+    </template>
+  </WFormFrame>
 </template>
 
 <style scoped>
-.pageFrame {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
 </style>
 
 <script lang="ts" setup>
+import WFormFrame from '@/components/WFormFrame.vue'
 import dbGetInstance from '@/shared/dbGetInstance'
 import dbWombatUsersList from '@/shared/dbWombatUsersList'
 import type { WombatUser } from '@/types'
@@ -44,6 +39,7 @@ onMounted(() => {
   dbGetInstance()
     .then(dbWombatUsersList)
     .then((users) => {
+      console.log('users', users)
       wombatUsers.value = users
     })
 })

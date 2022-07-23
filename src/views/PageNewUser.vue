@@ -1,39 +1,27 @@
 <template>
-    <div class="pageFrame">
-        <input class="form" type="text" placeholder="Alias" />
-        <WButton class="addButton">ADD</WButton>
-        <WButton class="cancelButton" @click="router.back">CANCEL</WButton>
-    </div>
+    <WFormFrame>
+        <template v-slot:body>
+            <input class="form" type="text" placeholder="Alias" />
+        </template>
+        <template v-slot:actions>
+            <div class="actions">
+                <WButton class="cancelButton" @click="router.back">CANCEL</WButton>
+                <WButton class="addButton">ADD</WButton>
+            </div>
+        </template>
+    </WFormFrame>
 </template>
 
 <style scoped>
-.pageFrame {
-    display: grid;
-    width: 100%;
-    height: 100%;
-    grid-template-rows: 10px 1fr 10px auto 10px;
-    grid-template-columns: 10px 1fr 10px 1fr 10px;
-}
-
-.form {
-    grid-row-start: 2;
-    grid-column-start: 2;
-    grid-column-end: -2;
-}
-
-.addButton {
-    grid-row-start: 4;
-    grid-column-start: 4;
-}
-
-.cancelButton {
-    grid-row-start: 4;
-    grid-column-start: 2;
+.actions {
+    display: flex;
+    gap: 10px;
 }
 </style>
 
 <script setup lang="ts">
 import WButton from '@/components/WButton.vue'
+import WFormFrame from '@/components/WFormFrame.vue'
 import { useRouter } from 'vue-router'
 
 const router = useRouter()

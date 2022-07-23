@@ -1,3 +1,7 @@
+export enum PROPS {
+    ALIAS = '0'
+}
+
 export type WombatUser = {
-    alias: string;
+    [PROPS.ALIAS]: string;
 }
