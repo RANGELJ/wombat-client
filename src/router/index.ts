@@ -12,11 +12,6 @@ const routes: Array<RouteRecordRaw> = [
     name: 'unsupportedBrowser',
     component: () => import('../views/PageUnsupportedBrowser.vue'),
   },
-  {
-    path: '/requestLogInUrl',
-    name: 'requestLogInUrl',
-    component: () => import('../views/PageRequestLoginUrl.vue'),
-  },
 ]
 
 const router = createRouter({
