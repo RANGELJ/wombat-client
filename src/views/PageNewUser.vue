@@ -4,21 +4,30 @@
             <div class="formFrame">
                 <h1 class="formTitle">Add user</h1>
                 <h2 class="formSubTitle">{{title}}</h2>
-                <p class="formDescription">{{description}}</p>
+                <WParagraph class="formDescription">{{description}}</WParagraph>
                 <div class="formBody">
                     <input
+                        ref="aliasInput"
                         class="textInput"
                         type="text"
                         placeholder="Your user alias"
                         autofocus
+                        @keyup.enter="onNext"
+                        v-model="alias"
                     />
                 </div>
             </div>
         </template>
         <template v-slot:actions>
             <div class="actions">
-                <WButton class="cancelButton" @click="router.back">CANCEL</WButton>
-                <WButton class="addButton">NEXT</WButton>
+                <WButton class="cancelButton" @click="onCancel">CANCEL</WButton>
+                <WButton
+                    class="addButton"
+                    :disabled="!alias"
+                    @click="onNext"
+                >
+                    NEXT
+                </WButton>
             </div>
         </template>
     </WFormFrame>
@@ -32,7 +41,7 @@
 
 .formTitle {
     grid-row-start: 1;
-    color: #7c828d;
+    color: var(--app-color);
     text-align: center;
     padding: 0px;
     margin: 0px;
@@ -74,11 +83,34 @@
 <script setup lang="ts">
 import WButton from '@/components/WButton.vue'
 import WFormFrame from '@/components/WFormFrame.vue'
-import { ref } from 'vue';
+import WParagraph from '@/components/WParagraph.vue'
+import { RouteNames } from '@/router'
+import { onMounted, ref } from 'vue'
 import { useRouter } from 'vue-router'
-
-const router = useRouter()
 
 const title = ref('User alias')
 const description = ref('Users are store localy on your device and you can have up to five, each user alias should be unique')
+
+const aliasInput = ref<HTMLInputElement | null>(null)
+
+onMounted(() => {
+    aliasInput.value?.focus()
+})
+
+const router = useRouter()
+
+const onCancel = () => {
+    router.replace({
+        name: RouteNames.HOME,
+    })
+}
+
+const alias = ref('')
+
+const onNext = () => {
+    if (!alias.value) {
+        return
+    }
+    console.log('Should go to next')
+}
 </script>

@@ -2,8 +2,8 @@
   <WFormFrame>
     <template v-slot:body>
       <div class="listFrame">
-        <WIconContact />
-        <p>No users found</p>
+        <WIconContact class="emptyListIcon" />
+        <WParagraph>No users found</WParagraph>
       </div>
     </template>
     <template v-slot:actions>
@@ -25,12 +25,17 @@
   align-items: center;
   justify-content: center;
 }
+
+.emptyListIcon {
+  fill: var(--app-color);
+}
 </style>
 
 <script lang="ts" setup>
 import WFormFrame from '@/components/WFormFrame.vue'
 import dbGetInstance from '@/shared/dbGetInstance'
 import WIconContact from '@/components/WIconContact.vue'
+import WParagraph from '@/components/WParagraph.vue'
 import dbWombatUsersList from '@/shared/dbWombatUsersList'
 import type { WombatUser } from '@/types'
 import { RouteNames } from '@/router'
@@ -59,7 +64,7 @@ onMounted(() => {
 })
 
 const onCreateNewUser = () => {
-  router.push({
+  router.replace({
     name: RouteNames.NEW_USER,
   })
 }
