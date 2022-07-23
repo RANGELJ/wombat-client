@@ -1,1 +1,3 @@
-export type MoneyTransaction = {}
+export type WombatUser = {
+    alias: string;
+}
