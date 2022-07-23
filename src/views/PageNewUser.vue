@@ -85,11 +85,13 @@ import WButton from '@/components/WButton.vue'
 import WFormFrame from '@/components/WFormFrame.vue'
 import WParagraph from '@/components/WParagraph.vue'
 import { RouteNames } from '@/router'
+import dbGetInstance from '@/shared/dbGetInstance'
+import dbWombatUsersGetByName from '@/shared/dbWombatUsersGetByName'
 import { onMounted, ref } from 'vue'
 import { useRouter } from 'vue-router'
 
 const title = ref('User alias')
-const description = ref('Users are store localy on your device and you can have up to five, each user alias should be unique')
+const description = ref('Users are stored locally on your device and you can have up to five, each user alias should be unique')
 
 const aliasInput = ref<HTMLInputElement | null>(null)
 
@@ -111,6 +113,10 @@ const onNext = () => {
     if (!alias.value) {
         return
     }
-    console.log('Should go to next')
+    dbGetInstance()
+        .then((db) => dbWombatUsersGetByName(db, alias.value))
+        .then((user) => {
+            console.log(user)
+        })
 }
 </script>
