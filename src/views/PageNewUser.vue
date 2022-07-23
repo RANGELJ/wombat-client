@@ -1,12 +1,22 @@
 <template>
     <WFormFrame>
         <template v-slot:body>
-            <input class="form" type="text" placeholder="Alias" autofocus />
+            <div>
+                <h1>Add user</h1>
+                <h2>User alias</h2>
+                <p>Users are store localy on your device and you can have up to five, each user alias should be unique</p>
+                <input
+                    class="textInput"
+                    type="text"
+                    placeholder="Alias"
+                    autofocus
+                />
+            </div>
         </template>
         <template v-slot:actions>
             <div class="actions">
                 <WButton class="cancelButton" @click="router.back">CANCEL</WButton>
-                <WButton class="addButton">ADD</WButton>
+                <WButton class="addButton">NEXT</WButton>
             </div>
         </template>
     </WFormFrame>
@@ -16,6 +26,14 @@
 .actions {
     display: flex;
     gap: 10px;
+}
+
+.textInput {
+    border-style: solid;
+    border-width: 1px;
+    width: 100%;
+    height: 60px;
+    border-radius: 5px;
 }
 </style>
 

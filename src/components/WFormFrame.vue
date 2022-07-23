@@ -19,6 +19,7 @@
 }
 
 .wFormBody {
+    display: flex;
     grid-row-start: 2;
     grid-column-start: 2;
 }

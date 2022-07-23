@@ -7,11 +7,6 @@ const dbGetInstance = () => new Promise<IDBDatabase>((resolve, reject) => {
     request.onupgradeneeded = (event) => {
         const database = request.result
 
-        console.log({
-            oldVersion: event.oldVersion,
-            newVersion: event.newVersion,
-        })
-
         switch (event.oldVersion) {
         default:
             // No action

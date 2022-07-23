@@ -39,7 +39,6 @@ onMounted(() => {
   dbGetInstance()
     .then(dbWombatUsersList)
     .then((users) => {
-      console.log('users', users)
       wombatUsers.value = users
     })
 })
