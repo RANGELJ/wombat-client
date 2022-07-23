@@ -8,6 +8,11 @@ const routes: Array<RouteRecordRaw> = [
     component: PageHome,
   },
   {
+    path: '/unsupportedBrowser',
+    name: 'unsupportedBrowser',
+    component: () => import('../views/PageUnsupportedBrowser.vue'),
+  },
+  {
     path: '/requestLogInUrl',
     name: 'requestLogInUrl',
     component: () => import('../views/PageRequestLoginUrl.vue'),

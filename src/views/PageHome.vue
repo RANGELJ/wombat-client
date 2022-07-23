@@ -9,8 +9,10 @@ import { useRouter } from 'vue-router'
 const router = useRouter()
 
 onMounted(() => {
-  router.replace({
-    name: 'requestLogInUrl',
-  })
+  if (!window.indexedDB) {
+    router.replace({
+      name: 'unsupportedBrowser'
+    })
+  }
 })
 </script>
