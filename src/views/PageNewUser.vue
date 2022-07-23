@@ -1,7 +1,7 @@
 <template>
     <WFormFrame>
         <template v-slot:body>
-            <input class="form" type="text" placeholder="Alias" />
+            <input class="form" type="text" placeholder="Alias" autofocus />
         </template>
         <template v-slot:actions>
             <div class="actions">

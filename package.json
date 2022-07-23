@@ -5,7 +5,8 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "deploy": "firebase deploy --only hosting"
   },
   "dependencies": {
     "axios": "0.27.2",
@@ -26,6 +27,7 @@
     "@vue/eslint-config-typescript": "9.1.0",
     "eslint": "7.32.0",
     "eslint-plugin-vue": "8.0.3",
+    "firebase-tools": "^11.3.0",
     "typescript": "~4.5.5"
   }
 }
