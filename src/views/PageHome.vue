@@ -1,6 +1,11 @@
 <template>
   <div class="pageFrame">
-    <button class="baseButton">ADD USER</button>
+    <button
+      class="baseButton"
+      @click="onCreateNewUser"
+    >
+      ADD USER
+    </button>
   </div>
 </template>
 
@@ -41,6 +46,7 @@
 import dbGetInstance from '@/shared/dbGetInstance'
 import dbWombatUsersList from '@/shared/dbWombatUsersList'
 import type { WombatUser } from '@/types'
+import { RouteNames } from '@/router'
 import { onMounted, ref } from 'vue'
 import { useRouter } from 'vue-router'
 
@@ -51,7 +57,7 @@ const wombatUsers = ref<WombatUser[]>([])
 onMounted(() => {
   if (!window.indexedDB) {
     router.replace({
-      name: 'unsupportedBrowser'
+      name: RouteNames.UNSUPPORTED,
     })
 
     return
@@ -63,4 +69,10 @@ onMounted(() => {
       wombatUsers.value = users
     })
 })
+
+const onCreateNewUser = () => {
+  router.push({
+    name: RouteNames.NEW_USER,
+  })
+}
 </script>
