@@ -1,9 +1,10 @@
 import { RouterProvider, createBrowserRouter } from 'react-router-dom'
+import firebaseGetApp from './shared/firebaseGetApp'
 
 const router = createBrowserRouter([
   {
     path: '/',
-    element: <div>Hi there</div>
+    element: <div>{JSON.stringify(firebaseGetApp())}</div>
   },
 ])
 
