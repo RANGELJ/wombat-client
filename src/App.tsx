@@ -1,10 +1,19 @@
 import { RouterProvider, createBrowserRouter } from 'react-router-dom'
-import firebaseGetApp from './shared/firebaseGetApp'
 
 const router = createBrowserRouter([
   {
     path: '/',
-    element: <div>{JSON.stringify(firebaseGetApp())}</div>
+    lazy: () => import('./views/ViewRoot'),
+    children: [
+      {
+        path: '',
+        lazy: () => import('./views/ViewHome'),
+      },
+      {
+        path: 'nouser',
+        lazy: () => import('./views/ViewNoUser'),
+      },
+    ],
   },
 ])
 
