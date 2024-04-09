@@ -7,5 +7,5 @@ export const Component = () => {
     return <Navigate to="/" replace />
   }
 
-  return null
+  throw new Error('Not implemented')
 }

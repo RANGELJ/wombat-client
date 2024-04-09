@@ -1,4 +1,4 @@
-import { Outlet } from 'react-router-dom'
+import { Outlet, useRouteError } from 'react-router-dom'
 import firebaseGetApp from '../shared/firebaseGetApp'
 import { type User, getAuth, onAuthStateChanged } from 'firebase/auth'
 import { useEffect, useState } from 'react'
@@ -19,4 +19,15 @@ export const Component = () => {
   }
 
   return <Outlet context={user} />
+}
+
+export const ErrorBoundary = () => {
+  const routeError = useRouteError()
+  const error = routeError instanceof Error ? routeError : new Error('Unknown error')
+
+  return (
+    <div>
+      {error.message}
+    </div>
+  )
 }
