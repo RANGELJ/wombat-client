@@ -10,6 +10,11 @@ export const Component = () => {
 
   return (
     <ScreenCardWithTitle title="Welcome!" color="primary">
+      <button
+        className="bg-primary-700 text-white p-3 rounded-lg transition-colors"
+      >
+        Login with Google
+      </button>
     </ScreenCardWithTitle>
   )
 }

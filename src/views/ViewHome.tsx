@@ -7,5 +7,5 @@ export const Component = () => {
     return <Navigate to="/nouser" replace />
   }
 
-  return null
+  throw new Error('Home view not implemented yet!')
 }

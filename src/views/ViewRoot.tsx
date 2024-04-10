@@ -1,6 +1,6 @@
 import { Outlet, useRouteError } from 'react-router-dom'
 import firebaseGetApp from '../shared/firebaseGetApp'
-import { type User, getAuth, onAuthStateChanged } from 'firebase/auth'
+import { type User, getAuth, onAuthStateChanged, useDeviceLanguage } from 'firebase/auth'
 import { useEffect, useState } from 'react'
 import ScreenCardWithTitle from '../components/ScreenCardWithTitle'
 
@@ -10,6 +10,8 @@ export const Component = () => {
   useEffect(() => {
     const firebaseApp = firebaseGetApp()
     const auth = getAuth(firebaseApp)
+    // eslint-disable-next-line react-hooks/rules-of-hooks
+    useDeviceLanguage(auth)
     return onAuthStateChanged(auth, (user) => {
       setUser(user)
     })
