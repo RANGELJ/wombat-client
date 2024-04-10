@@ -1,4 +1,5 @@
 import { Navigate, useOutletContext } from 'react-router-dom'
+import ScreenCardWithTitle from '../components/ScreenCardWithTitle'
 
 export const Component = () => {
   const user = useOutletContext()
@@ -7,5 +8,8 @@ export const Component = () => {
     return <Navigate to="/" replace />
   }
 
-  throw new Error('Not implemented')
+  return (
+    <ScreenCardWithTitle title="Welcome!" color="primary">
+    </ScreenCardWithTitle>
+  )
 }
